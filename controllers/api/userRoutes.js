@@ -14,7 +14,8 @@ router.post('/', async (req, res) => {
       console.log("This is working")
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json(err)
+    .json({ message: 'Bad Signup' });
   }
 });
 // /api/users/login

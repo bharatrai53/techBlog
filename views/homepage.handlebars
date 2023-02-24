@@ -1,0 +1,56 @@
+<form class="form post-form">
+  <div class="form-group">
+    <label for="userPost">User post:</label>
+    <input class="post-form-input" type="text" id="userPost" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Post</button>
+  </div>
+</form>
+<div class="row">
+{{#each posts as |post|}}
+  {{! Post Container }}
+  <div class="col-12">
+  <div class="post" data-postid={{post.id}}>
+    <div class="post-content" style="font-style">
+      <p>
+        {{post.user.name}}:
+        {{post.content}}
+      </p>
+    </div>
+    <form class="form post-delete-form">
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Delete Post</button>
+      </div>
+    </form>
+    {{! Comment Form }}
+    <form class="form comment-form">
+      <div class="form-group">
+        <label for="comment-post">Comment:</label>
+        <input class="form-input" type="text" id="comment-post" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" style="background-color:rgb(116, 255, 146)"type="submit">New Comment</button>
+      </div>
+    </form>
+    {{! Render Comments}}
+    {{#each comments as |comment|}}
+      <div class="comment" data-commentid={{comment.id}}>
+        <div class="comment-content">
+          <p>
+            {{comment.user.name}}:
+            {{comment.content}}
+          </p>
+        </div>
+        <form class="form comment-delete-form">
+          <div class="form-group">
+            <button class="btn btn-primary" style="background-color:rgb(255, 116, 116)", "margin-left: 150%" type="submit">Delete Comment</button>
+          </div>
+        </form>
+      </div>
+    {{/each}}
+  </div>
+  </div>
+{{/each}}
+</div>
+<script src="./js/homePage.js"></script>
